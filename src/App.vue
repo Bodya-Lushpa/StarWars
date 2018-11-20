@@ -11,7 +11,6 @@
         </div>
         <div class="col-md-8">
           <router-view></router-view>
-
         </div>
       </div>
     </div>
@@ -28,7 +27,6 @@ export default {
       info: ''
     }
   },
-
   mounted() {
     this.axios.get('https://swapi.co/api/films').then(response => (this.info = response.data));
   }

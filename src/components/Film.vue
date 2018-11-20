@@ -4,11 +4,11 @@
      <p class="DescriptionFilm">
        {{ info.results[id].opening_crawl }}
      </p>
-      <p>
-        {{ this.character }}
-      </p>
+    <p>
+      {{ this.character }}
+    </p>
 
-    
+
   </div>
 </template>
 
@@ -19,20 +19,20 @@
       return {
         info: "",
         people: "",
-        character: '',
-        i: 0
+        character: []
       }
     },
-    created(){
+    mounted(){
       this.axios.get('https://swapi.co/api/films').then(response => (this.info = response.data));
     },
     watch: {
-      id: function () {
-        this.character = "";
+      id: function(){
+        this.character = [];
         this.people = this.info.results[this.id].characters;
         for(this.i = 0; this.i < this.people.length; this.i++){
-          this.axios.get(this.people[this.i]).then(response => (this.character[this.i] += response.data));
+          this.axios.get(this.people[this.i]).then(response => (this.character[this.i] = response.data));
         }
+        console.log(this.character);
       }
     }
   }
