@@ -19,7 +19,8 @@
       return {
         info: "",
         people: "",
-        character: []
+        character: [],
+        i: 0
       }
     },
     mounted(){
